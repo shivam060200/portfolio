@@ -19,9 +19,6 @@ function Footer() {
         <div className="row">
           <div className="col-12 col-md-4 py-3">
             <h5 className="text-info pb-3">More links</h5>
-            <a href="/" className="text-light d-block">
-              Blogs
-            </a>
             <Link to="/" className="text-light d-block">
               Home
             </Link>
@@ -50,13 +47,25 @@ function Footer() {
           </div>
           <div className="col-12 col-md-4 py-3">
             <h5 className="text-info pb-3">Social</h5>
-            <a href="/">
+            <a
+              href="https://www.linkedin.com/in/shivam-pandya-a931b616a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-linkedin text-light h1 d-block"></i>
             </a>
-            <a href="/">
+            <a
+              href="https://github.com/shivam060200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-github text-light h1 d-block"></i>
             </a>
-            <a href="/">
+            <a
+              href="mailto: shivam.pandya9@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fas fa-envelope text-light h1 d-block"></i>
             </a>
           </div>

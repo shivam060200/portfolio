@@ -28,12 +28,6 @@ function Navbar() {
             >
               Projects
             </Link>
-            <Link
-              to="/allblogs"
-              className="nav-item nav-link text-dark h6 mx-1 my-auto"
-            >
-              Blogs
-            </Link>
           </div>
         </div>
       </div>

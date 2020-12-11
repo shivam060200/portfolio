@@ -28,7 +28,7 @@ class Contact extends Component {
     };
 
     const response = await axios.post(
-      "http://127.0.0.1:9000/api/contact",
+      "http://laptop-v3t0v29o:9000/api/contact",
       newContact
     );
     const isSuccessful = response.data.isSuccessful;

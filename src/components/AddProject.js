@@ -40,7 +40,7 @@ class AddProject extends Component {
     };
 
     const response = await axios.post(
-      "http://127.0.0.1:9000/api/project",
+      "http://laptop-v3t0v29o:9000/api/project",
       newProject
     );
 

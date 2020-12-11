@@ -1,17 +1,22 @@
+import os
 from flask import Flask, g, request
 from flask_cors import CORS
 import pymysql
 import logging
 import datetime
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 CORS(app)
+
+DB_PASS = os.getenv("PASSW")
 
 
 @app.before_request
 def before_request():
     g.db = pymysql.connect(
-        host="localhost", user="root", db="portfolio_website", autocommit=True
+        host="localhost", user="root", password=DB_PASS, db="portfolio_website",  autocommit=True
     )
     g.cursor = g.db.cursor()
 
@@ -20,6 +25,16 @@ def before_request():
 def teardown_request(exception):
     g.cursor.close()
     g.db.close()
+
+
+"""@app.route("/", methods=["GET"])
+def home():
+    cursor = g.db.cursor()
+    cmd = "SHOW TABLES;"
+    cursor.execute(cmd)
+    tables = cursor.fetchall()
+    print(tables)
+    return "Hello!"""
 
 
 @app.route("/api/recommendations", methods=["GET"])
@@ -111,35 +126,6 @@ def get_projects():
         return {"isSuccessful": False, "results": []}
 
 
-@app.route("/api/blogs", methods=["GET"])
-def get_blogs():
-    try:
-        # SQL query
-        query = "SELECT id, imageUrl, title, excerpt FROM blogs WHERE isPublished=True ORDER BY lastModified DESC;"
-
-        # Fetch the data
-        g.cursor.execute(query)
-        blogs = g.cursor.fetchall()
-
-        # Process the data
-        results = []
-        for blog in blogs:
-            blog_obj = {
-                "id": blog[0],
-                "imageUrl": blog[1],
-                "title": blog[2],
-                "excerpt": blog[3],
-            }
-            results.append(blog_obj)
-
-        # Return the results
-        return {"isSuccessful": True, "results": results}
-    except Exception as e:
-        # Handle errors
-        logging.error(e)
-        return {"isSuccessful": False, "results": []}
-
-
 @app.route("/api/project", methods=["POST"])
 def add_project():
     try:
@@ -156,31 +142,6 @@ def add_project():
                 project["title"],
                 project["excerpt"],
                 project["body"],
-                True,
-                datetime.datetime.now(),
-            ],
-        )
-        return {"isSuccessful": True}
-    except Exception as e:
-        logging.error(e)
-        return {"isSuccessful": False}
-
-
-@app.route("/api/blog", methods=["POST"])
-def add_blog():
-    try:
-        blog = request.json
-        # SQL query
-        query = "INSERT INTO blogs VALUES(%s, %s, %s, %s, %s, %s, %s);"
-
-        g.cursor.execute(
-            query,
-            [
-                blog["id"],
-                blog["imageUrl"],
-                blog["title"],
-                blog["excerpt"],
-                blog["body"],
                 True,
                 datetime.datetime.now(),
             ],

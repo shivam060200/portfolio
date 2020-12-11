@@ -1,6 +1,5 @@
 import React from "react";
 import ProjectSection from "./ProjectSection";
-import BlogSection from "./BlogSection";
 import SkillsSection from "./SkillsSection";
 import RecommendationSection from "./RecommendationSection";
 import Title from "./Title";
@@ -14,7 +13,6 @@ function HomePage() {
       <SkillsSection />
       <ProjectSection />
       <About />
-      <BlogSection />
     </div>
   );
 }

@@ -11,7 +11,7 @@ class ProjectPage extends Component {
 
   async componentDidMount() {
     const response = await axios.get(
-      `http://127.0.0.1:9000/api/project?id=${this.props.match.params.id}`
+      `http://laptop-v3t0v29o:9000/api/project?id=${this.props.match.params.id}`
     );
     const isSuccessful = response.data.isSuccessful;
 

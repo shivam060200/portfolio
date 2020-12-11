@@ -3,7 +3,7 @@ import axios from "axios";
 
 class Test extends Component {
   onClick = async () => {
-    const response = await axios.get("http://127.0.0.1:5000/");
+    const response = await axios.get("http://laptop-v3t0v29o:9000/");
     console.log(response);
   };
 

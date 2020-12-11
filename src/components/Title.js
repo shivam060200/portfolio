@@ -27,7 +27,7 @@ function Title(props) {
 }
 
 Title.defaultProps = {
-  name: "Manikumar P",
+  name: "Shivam P",
   leadText: "I'm a freelancer from India",
 };
 
