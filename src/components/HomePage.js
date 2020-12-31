@@ -8,7 +8,10 @@ import About from "./About";
 function HomePage() {
   return (
     <div>
-      <Title name="YOUR NAME" leadText="I am a freelancer from India" />
+      <Title
+        name="YOUR NAME"
+        leadText="I am a student and developer from India"
+      />
       <RecommendationSection />
       <SkillsSection />
       <ProjectSection />
